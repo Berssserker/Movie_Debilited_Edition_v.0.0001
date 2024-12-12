@@ -1,2 +1,2 @@
-import { getMovie } from './GetMovie'
+import { getMovie } from './getMovie'
 export { getMovie }
