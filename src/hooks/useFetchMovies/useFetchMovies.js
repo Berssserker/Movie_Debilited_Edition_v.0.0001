@@ -1,13 +1,9 @@
 import { useState, useEffect } from 'react'
-import debounce from 'lodash.debounce'
 
 import { fetchMovies } from '../../api/fetchMovies/fetchMovies'
+import { customDebounce } from '../../utils/customDebounce'
 
-const customDebounce = (func, wait) => {
-  return debounce(func, wait)
-}
-
-const useFetchMovies = (text, page, tab) => {
+export const useFetchMovies = (text, page, tab) => {
   const [moviesData, setMoviesData] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -26,5 +22,3 @@ const useFetchMovies = (text, page, tab) => {
   }, [text, page, tab])
   return { moviesData, loading, error, setLoading }
 }
-
-export default useFetchMovies

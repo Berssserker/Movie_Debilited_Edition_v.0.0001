@@ -1,15 +1,11 @@
 import { useState, useEffect } from 'react'
 
-import { getGenres } from '../../api/getGenres'
+import { fetchGenres } from '../../api/fetchGenres'
 
 export const useFetchGenres = () => {
   const [genresData, setGenresData] = useState([])
   useEffect(() => {
-    const fetchGenres = async () => {
-      const body = await getGenres()
-      setGenresData(body.genres || [])
-    }
-    fetchGenres()
+    fetchGenres(setGenresData)
   }, [])
   return genresData
 }
