@@ -1,21 +1,11 @@
 import { useState, useEffect } from 'react'
 
-import { getGenres } from '../../api/getGenres'
+import { fetchGenres } from '../../api/fetchGenres'
 
-const useFetchGenres = () => {
+export const useFetchGenres = () => {
   const [genresData, setGenresData] = useState([])
   useEffect(() => {
-    const Fetch = async () => {
-      try {
-        const body = await getGenres()
-        setGenresData(body.genres)
-      } catch {
-        setGenresData([])
-      }
-    }
-    Fetch()
+    fetchGenres(setGenresData)
   }, [])
   return genresData
 }
-
-export default useFetchGenres
