@@ -6,8 +6,10 @@ const useFetchRatedMovies = (guestId, tab, rate, movieId, setLoading) => {
   const [ratedMoviesData, setRatedMoviesData] = useState([])
   const [ratedError, setRatedError] = useState(false)
   useEffect(() => {
-
-    Fetch()
+    if (!tab && guestId) {
+      setLoading(true)
+      FetchRatedMovies(guestId, setRatedMoviesData, setLoading, setRatedError)
+    }
   }, [tab, rate, movieId, guestId])
   return { ratedMoviesData, ratedError }
 }
