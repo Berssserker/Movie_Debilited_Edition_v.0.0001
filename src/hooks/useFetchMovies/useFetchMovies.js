@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { fetchMovies } from '../../api/fetchMovies/fetchMovies'
+import { fetchMovies } from '../../api/fetchMovies'
 import { customDebounce } from '../../utils/customDebounce'
 
 export const useFetchMovies = (text, page, tab) => {
