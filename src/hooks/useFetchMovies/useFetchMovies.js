@@ -3,14 +3,12 @@ import { useState, useEffect } from 'react'
 import { fetchMovies } from '../../api/fetchMovies'
 import { customDebounce } from '../../utils/customDebounce'
 
-export const useFetchMovies = (text, page, tab) => {
+export const useFetchMovies = (text, page, component, setLoading) => {
   const [moviesData, setMoviesData] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
   useEffect(() => {
     setMoviesData([])
     const debouncedFetchMovies = customDebounce(() => {
-      fetchMovies(setError, setMoviesData, setLoading, text, page)
+      fetchMovies(setMoviesData, setLoading, text, page)
     }, 1000)
     if (text) {
       setLoading(true)
@@ -19,6 +17,6 @@ export const useFetchMovies = (text, page, tab) => {
     return () => {
       debouncedFetchMovies.cancel()
     }
-  }, [text, page, tab])
-  return { moviesData, loading, error, setLoading }
+  }, [text, page, component])
+  return moviesData
 }

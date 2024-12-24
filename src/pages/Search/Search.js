@@ -1,5 +1,5 @@
 import React from 'react'
 
-export const Rated = () => {
+export const Search = () => {
   return <div></div>
 }

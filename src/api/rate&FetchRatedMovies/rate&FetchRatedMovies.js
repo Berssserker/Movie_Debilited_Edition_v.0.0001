@@ -1,7 +1,7 @@
 import { rateOrDeleteRating } from './rateOrDeleteRating'
 import { fetchRatedMovies } from './fetchRatedMovies'
 
-export const rateAndFetchMovies = async (guestId, movieId, rating, setRatedMoviesData, setRatedError, setLoading) => {
+export const rateAndFetchMovies = async (guestId, movieId, rating, setRatedMoviesData, setLoading) => {
   await rateOrDeleteRating(guestId, movieId, rating)
-  await fetchRatedMovies(guestId, setRatedMoviesData, setRatedError, setLoading)
+  await fetchRatedMovies(guestId, setRatedMoviesData, setLoading)
 }
