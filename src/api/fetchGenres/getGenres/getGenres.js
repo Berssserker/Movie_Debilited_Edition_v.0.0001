@@ -3,12 +3,9 @@ export const getGenres = async () => {
   const url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`
   try {
     const response = await fetch(url)
-    if (!response.ok) {
-      throw new Error(`${response.status}, ${response.statusText}`)
-    }
     const body = await response.json()
     return body
-  } catch {
-    return {}
+  } catch (error) {
+    throw new Error(error)
   }
 }

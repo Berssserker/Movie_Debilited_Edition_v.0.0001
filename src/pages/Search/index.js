@@ -1,2 +1,2 @@
-import { Search } from './Search'
-export { Search }
+import { GeneralList } from './GeneralList'
+export { GeneralList }
