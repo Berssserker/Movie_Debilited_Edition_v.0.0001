@@ -24,7 +24,7 @@ export const MoviePages = () => {
       ) : (
         <>
           {!isRatedListList && <GeneralList />}
-          {isRatedListList && <RatedListList />}
+          {isRatedListList && <RatedList />}
         </>
       )}
     </main>
