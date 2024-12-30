@@ -1,5 +1,11 @@
 import React from 'react'
 
-export const RatedList = () => {
-  return <div></div>
+import { MovieList } from '../../components/MovieList'
+
+export const RatedList = ({ ...props }) => {
+  return (
+    <section className="movie-list">
+      <MovieList {...props} />
+    </section>
+  )
 }

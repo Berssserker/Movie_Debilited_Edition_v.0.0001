@@ -1,5 +1,11 @@
 import React from 'react'
 
-export const GeneralList = () => {
-  return <div></div>
+import { MovieList } from '../../components/MovieList'
+
+export const GeneralList = ({ ...props }) => {
+  return (
+    <section className="movie-list">
+      <MovieList {...props} />
+    </section>
+  )
 }

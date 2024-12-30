@@ -9,6 +9,7 @@ import { ErrorMessage } from '../../components/ErrorMessage'
 import { Header } from '../../components/Header'
 import { GeneralList } from '../GeneralList'
 import { RatedList } from '../RatedList'
+import { Footer } from '../../components/Footer'
 
 export const MoviePages = () => {
   const isOnline = useNetworkStatus()
@@ -17,7 +18,7 @@ export const MoviePages = () => {
 
   const [text, setText] = useState('')
   const [page, setPage] = useState(1)
-  const [isRatedList, setIsRatedList] = useState(false)
+  const [isRatedList, setIsRatedList] = useState(1)
   const [ratedListData, setRatedListData] = useState([])
 
   return (
@@ -47,6 +48,7 @@ export const MoviePages = () => {
               setRatedListData={setRatedListData}
             />
           )}
+          {!isRatedList && <Footer page={page} setPage={setPage} />}
         </>
       )}
     </main>
