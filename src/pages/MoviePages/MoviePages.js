@@ -1,30 +1,52 @@
 import React, { useState } from 'react'
 
-import { GeneralList } from '../GeneralList'
-import { RatedList } from '../RatedList'
+import './MoviePages.css'
+
 import { useFetchId } from '../../hooks/useFetchId'
 import { useNetworkStatus } from '../../hooks/useNetworkStatus'
 import { useFetchGenres } from '../../hooks/useFetchGenres'
+import { ErrorMessage } from '../../components/ErrorMessage'
+import { Header } from '../../components/Header'
+import { GeneralList } from '../GeneralList'
+import { RatedList } from '../RatedList'
 
 export const MoviePages = () => {
+  const isOnline = useNetworkStatus()
+  const genres = useFetchGenres()
+  const guestId = useFetchId()
+
   const [text, setText] = useState('')
   const [page, setPage] = useState(1)
-  const [isRatedListList, setIsRatedListList] = useState(false)
-  const [RatedListMoviesData, setRatedListMoviesData] = useState([])
-
-  const guestId = useFetchId()
-  const genres = useFetchGenres()
-  const isOnline = useNetworkStatus()
+  const [isRatedList, setIsRatedList] = useState(false)
+  const [ratedListData, setRatedListData] = useState([])
 
   return (
-    <main>
-      <Header setComponent={setComponent} />
-      {!isOnline || !guestId ? (
-        <ErrorMessage isOnline={isOnline} guestId={guestId} />
+    <main className="movie">
+      <Header setIsRatedList={setIsRatedList} />
+      {!isOnline ? (
+        <ErrorMessage isOnline={isOnline} />
       ) : (
         <>
-          {!isRatedListList && <GeneralList />}
-          {isRatedListList && <RatedList />}
+          {!isRatedList && (
+            <GeneralList
+              guestId={guestId}
+              ratedListData={ratedListData}
+              setRatedListData={setRatedListData}
+              genres={genres}
+              text={text}
+              setText={setText}
+              page={page}
+              setPage={setPage}
+            />
+          )}
+          {isRatedList && (
+            <RatedList
+              guestId={guestId}
+              genres={genres}
+              ratedListData={ratedListData}
+              setRatedListData={setRatedListData}
+            />
+          )}
         </>
       )}
     </main>

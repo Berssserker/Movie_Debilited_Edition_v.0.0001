@@ -1,0 +1,13 @@
+body {
+    background-color: #F7F7F7;
+}
+
+.movie {
+    flex-direction: column;
+    align-items: center;   
+    display: flex;
+    margin: auto;
+    width: 1010px;
+    min-height: 100vh;
+    background-color: #FFFFFF;
+}
