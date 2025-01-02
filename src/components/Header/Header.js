@@ -3,9 +3,9 @@ import { Tabs } from 'antd'
 
 import './Header.css'
 
-export const Header = ({ setIsRatedList }) => {
+export const Header = ({ setActiveList }) => {
   const onChange = (key) => {
-    setIsRatedList(key)
+    setActiveList(key)
   }
   return (
     <Tabs

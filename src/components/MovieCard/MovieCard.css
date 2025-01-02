@@ -25,6 +25,8 @@ div.ant-card:first-child, div.ant-card:nth-child(2) {
 }
 
 div.ant-card div.ant-card-body {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     margin: 10px 0 49px 20px;
     padding: 0;
@@ -122,4 +124,8 @@ section.movie-list div.ant-card.ant-card-bordered div.ant-card-body ul.ant-rate 
 
 .genre span:first-child {
     margin-left: 0;
+}
+
+div.ant-card.ant-card-bordered div.ant-spin.ant-spin-spinning {
+    margin-top: 20px;
 }

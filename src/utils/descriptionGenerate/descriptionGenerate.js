@@ -1,9 +1,9 @@
 export const descriptionGenerate = (isOnline, ratedListData, generalListData) => {
-  if (isOnline !== undefined && !isOnline) {
+  if (isOnline !== undefined) {
     return 'There is no internet connection.'
-  } else if (ratedListData !== undefined && !ratedListData) {
+  } else if (ratedListData !== undefined) {
     return 'We have not found the films you rated.'
-  } else if (generalListData !== undefined && !generalListData) {
+  } else if (generalListData !== undefined) {
     return 'No data was found.'
   }
 }

@@ -4,7 +4,6 @@ export const getGenres = async () => {
   try {
     const response = await fetch(url)
     const body = await response.json()
-    console.log(body)
     return body
   } catch (error) {
     throw new Error(error)

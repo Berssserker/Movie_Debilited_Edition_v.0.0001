@@ -18,19 +18,24 @@ export const MoviePages = () => {
 
   const [text, setText] = useState('')
   const [page, setPage] = useState('1')
-  const [isRatedList, setIsRatedList] = useState('1')
+  const [activeList, setActiveList] = useState('1')
   const [ratedListData, setRatedListData] = useState([])
+  const [generalLoading, setGeneralLoading] = useState(false)
+  const [ratedLoading, setRatedLoading] = useState(false)
 
   return (
     <main className="movie">
-      <Header isRatedList={isRatedList} setIsRatedList={setIsRatedList} />
+      <Header setActiveList={setActiveList} />
       {!isOnline ? (
         <ErrorMessage isOnline={isOnline} />
       ) : (
         <>
-          {isRatedList === '1' && (
+          {activeList === '1' && (
             <GeneralList
-              isRatedList={isRatedList}
+              generalLoading={generalLoading}
+              setGeneralLoading={setGeneralLoading}
+              setRatedLoading={setRatedLoading}
+              activeList={activeList}
               guestId={guestId}
               ratedListData={ratedListData}
               setRatedListData={setRatedListData}
@@ -41,15 +46,18 @@ export const MoviePages = () => {
               setPage={setPage}
             />
           )}
-          {isRatedList === '2' && (
+          {activeList === '2' && (
             <RatedList
+              ratedLoading={ratedLoading}
+              setRatedLoading={setRatedLoading}
+              activeList={activeList}
               guestId={guestId}
               genresData={genresData}
               ratedListData={ratedListData}
               setRatedListData={setRatedListData}
             />
           )}
-          {isRatedList === '1' && text && <Footer page={page} setPage={setPage} />}
+          {activeList === '1' && text && <Footer page={page} setPage={setPage} />}
         </>
       )}
     </main>

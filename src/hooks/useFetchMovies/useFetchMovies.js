@@ -3,17 +3,22 @@ import { useState, useEffect } from 'react'
 import { fetchMovies } from '../../api/fetchMovies'
 import { customDebounce } from '../../utils/customDebounce'
 
-export const useFetchMovies = (text, page, isRatedList, setLoading) => {
+export const useFetchMovies = (text, page, activeList, setGeneralLoading) => {
   const [generalListData, setGeneralListData] = useState([])
   const debouncedFetchMovies = customDebounce(() => {
-    fetchMovies(setGeneralListData, setLoading, text, page)
+    fetchMovies(setGeneralListData, setGeneralLoading, text, page)
   }, 1000)
   useEffect(() => {
     if (text) {
-      setGeneralListData([])
-      setLoading(true)
+      setGeneralLoading(true)
       debouncedFetchMovies()
+    } else {
+      setGeneralListData([])
+      setGeneralLoading(false)
     }
-  }, [text, page, isRatedList])
+    return () => {
+      debouncedFetchMovies.cancel()
+    }
+  }, [text, page, activeList])
   return generalListData
 }
