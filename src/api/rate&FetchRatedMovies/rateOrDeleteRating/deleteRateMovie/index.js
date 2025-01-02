@@ -1,2 +1,2 @@
-import { deleteRateMovie } from './DeleteRateMovie'
+import { deleteRateMovie } from './deleteRateMovie'
 export { deleteRateMovie }

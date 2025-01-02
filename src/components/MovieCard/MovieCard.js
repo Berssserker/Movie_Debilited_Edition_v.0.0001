@@ -7,7 +7,7 @@ import { rateAndFetchMovies } from '../../api/rate&FetchRatedMovies'
 
 import { CardMeta } from './CardMeta'
 
-export const MovieCard = ({ guestId, id, poster_path, rating, ...props }) => {
+export const MovieCard = ({ guestId, id, poster_path, rating, setRatedListData, ...props }) => {
   const [ratingData, setRatingData] = useState(rating || 0)
   const [cardLoading, setCardLoading] = useState(false)
 
@@ -17,7 +17,7 @@ export const MovieCard = ({ guestId, id, poster_path, rating, ...props }) => {
 
   const ChangeRating = async (e) => {
     setCardLoading(true)
-    await rateAndFetchMovies(guestId, id, e)
+    await rateAndFetchMovies(guestId, id, e, setRatedListData)
     setCardLoading(false)
     setRatingData(e)
   }

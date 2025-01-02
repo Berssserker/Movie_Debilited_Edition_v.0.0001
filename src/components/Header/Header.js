@@ -5,7 +5,7 @@ import './Header.css'
 
 export const Header = ({ setIsRatedList }) => {
   const onChange = (key) => {
-    key === 1 ? setIsRatedList(false) : setIsRatedList(true)
+    setIsRatedList(key)
   }
   return (
     <Tabs

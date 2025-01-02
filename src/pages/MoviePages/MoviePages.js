@@ -13,42 +13,43 @@ import { Footer } from '../../components/Footer'
 
 export const MoviePages = () => {
   const isOnline = useNetworkStatus()
-  const genres = useFetchGenres()
+  const genresData = useFetchGenres()
   const guestId = useFetchId()
 
   const [text, setText] = useState('')
-  const [page, setPage] = useState(1)
-  const [isRatedList, setIsRatedList] = useState(1)
+  const [page, setPage] = useState('1')
+  const [isRatedList, setIsRatedList] = useState('1')
   const [ratedListData, setRatedListData] = useState([])
 
   return (
     <main className="movie">
-      <Header setIsRatedList={setIsRatedList} />
+      <Header isRatedList={isRatedList} setIsRatedList={setIsRatedList} />
       {!isOnline ? (
         <ErrorMessage isOnline={isOnline} />
       ) : (
         <>
-          {!isRatedList && (
+          {isRatedList === '1' && (
             <GeneralList
+              isRatedList={isRatedList}
               guestId={guestId}
               ratedListData={ratedListData}
               setRatedListData={setRatedListData}
-              genres={genres}
+              genresData={genresData}
               text={text}
               setText={setText}
               page={page}
               setPage={setPage}
             />
           )}
-          {isRatedList && (
+          {isRatedList === '2' && (
             <RatedList
               guestId={guestId}
-              genres={genres}
+              genresData={genresData}
               ratedListData={ratedListData}
               setRatedListData={setRatedListData}
             />
           )}
-          {!isRatedList && <Footer page={page} setPage={setPage} />}
+          {isRatedList === '1' && text && <Footer page={page} setPage={setPage} />}
         </>
       )}
     </main>

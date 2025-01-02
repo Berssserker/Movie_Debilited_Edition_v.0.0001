@@ -1,10 +1,10 @@
 import { rateMovie } from './rateMovie'
-import { deleteRateMovie } from './DeleteRateMovie'
+import { deleteRateMovie } from './deleteRateMovie'
 
-export const rateOrDeleteRating = async (guestId, movieId, rating) => {
+export const rateOrDeleteRating = async (guestId, id, rating) => {
   if (rating) {
-    await rateMovie(guestId, movieId, rating)
+    await rateMovie(guestId, id, rating)
   } else {
-    await deleteRateMovie(guestId, movieId)
+    await deleteRateMovie(guestId, id)
   }
 }
