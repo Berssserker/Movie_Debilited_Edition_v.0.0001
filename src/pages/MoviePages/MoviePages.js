@@ -17,7 +17,7 @@ export const MoviePages = () => {
   const guestId = useFetchId()
 
   const [text, setText] = useState('')
-  const [page, setPage] = useState('1')
+  const [page, setPage] = useState(1)
   const [activeList, setActiveList] = useState('1')
   const [ratedListData, setRatedListData] = useState([])
   const [generalLoading, setGeneralLoading] = useState(false)
