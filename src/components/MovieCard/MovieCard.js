@@ -3,7 +3,7 @@ import { Card, Rate, Spin } from 'antd'
 
 import './MovieCard.css'
 
-import { rateAndFetchMovies } from '../../api/rate&FetchRatedMovies'
+import { rateAndFetchMovies } from '../../services/rate&FetchRatedMovies'
 import { imageURL } from '../../public/imageURL'
 import { plug } from '../../public/plug'
 
