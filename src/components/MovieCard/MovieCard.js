@@ -4,6 +4,8 @@ import { Card, Rate, Spin } from 'antd'
 import './MovieCard.css'
 
 import { rateAndFetchMovies } from '../../api/rate&FetchRatedMovies'
+import { imageURL } from '../../public/imageURL'
+import { plug } from '../../public/plug'
 
 import { CardMeta } from './CardMeta'
 
@@ -11,9 +13,7 @@ export const MovieCard = ({ guestId, id, poster_path, rating, setRatedListData, 
   const [ratingData, setRatingData] = useState(rating || 0)
   const [cardLoading, setCardLoading] = useState(false)
 
-  const url = 'https://image.tmdb.org/t/p/original'
-  const plug = 'https://i1.sndcdn.com/artworks-Bg54D6aCmjdNZLMh-9lWVgg-t500x500.jpg'
-  const fullImageUrl = poster_path ? url + poster_path : plug
+  const fullImageUrl = poster_path ? imageURL + poster_path : plug
 
   const ChangeRating = async (e) => {
     setCardLoading(true)

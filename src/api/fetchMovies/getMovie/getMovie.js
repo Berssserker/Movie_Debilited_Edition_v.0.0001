@@ -1,5 +1,6 @@
+import { apiKey } from '../../../public/apiKey'
+
 export const getMovie = async (text, page) => {
-  const apiKey = 'dbabe22dcc1a65ea74c83602a2fa9d71'
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(text)}&page=${page}`
   try {
     const response = await fetch(url)
