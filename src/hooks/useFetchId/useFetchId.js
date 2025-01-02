@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { fetchId } from '../../api/fetchId'
+import { fetchId } from '../../services/fetchId'
 
 export const useFetchId = () => {
   const [guestId, setGuestId] = useState()

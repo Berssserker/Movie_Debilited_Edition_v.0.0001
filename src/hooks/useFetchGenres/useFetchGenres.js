@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { fetchGenres } from '../../api/fetchGenres'
+import { fetchGenres } from '../../services/fetchGenres'
 
 export const useFetchGenres = () => {
   const [genresData, setGenresData] = useState([])
